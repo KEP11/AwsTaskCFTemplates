@@ -1,9 +1,29 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: "Amazon EC2."
+Description: "Amazon EC2 Instance"
 Resources:
-    Host:
-        Type: 'AWS::EC2::Host'
-        Properties: 
-            AutoPlacement: 'on'
+    EC2Instance:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-08c40ec9ead489470"
+            InstanceType: "t2.micro"
             AvailabilityZone: us-east-1a
-            InstanceType: t2.micro
+            Tenancy: "default"
+            EbsOptimized: false
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 15
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "AWSTaskEC2Instance"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+

@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  awstasklambdakep1:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: 'AWSLambda::AWSLambda.Function::FunctionHandler'
+      Runtime: dotnet6
+      CodeUri: .
+      Description: ''
+      MemorySize: 512
+      Timeout: 15
+      Role: >-
+        arn:aws:iam::042072295322:role/service-role/aws-task-lambda-kep-role-fq9dsxam
