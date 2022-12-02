@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Amazon DynamoDb."
+Resources:
+  booksTable:
+    Type: 'AWS::DynamoDB::Table'
+    DeletionPolicy: "Retain"
+    Properties:
+        TableName: "aws-dynamodb-kep"
+        ProvisionedThroughput: 
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+        AttributeDefinitions:
+            - 
+                AttributeName: "ISBN"
+                AttributeType: "S"
+         
+        KeySchema: 
+            - 
+                AttributeName: "ISBN"
+                KeyType: "HASH"
