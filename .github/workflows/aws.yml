@@ -31,16 +31,3 @@ jobs:
         name: MyStack
         template: Templates/EC2Template.yml
 
-    - name: Deploy DynamoDb to AWS CloudFormation
-      uses: aws-actions/aws-cloudformation-github-deploy@v1
-      with:
-        name: MyStack1
-        template: Templates/dynamoDbTemplate.yml
-        
-    - name: Deploy SQS to AWS CloudFormation
-      uses: aws-actions/aws-cloudformation-github-deploy@v1
-      with:
-        name: MyStack2
-        template: Templates/SQSTemplate.yml
-      
-
