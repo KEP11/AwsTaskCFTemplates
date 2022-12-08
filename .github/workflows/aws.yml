@@ -25,9 +25,22 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    - name: Deploy to AWS CloudFormation
+    - name: Deploy EC2 to AWS CloudFormation
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
         name: MyStack
         template: Templates/EC2Template.yml
+
+    - name: Deploy DynamoDb to AWS CloudFormation
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
+      with:
+        name: MyStack
+        template: Templates/dynamoDbTemplate.yml
+        
+    - name: Deploy SQS to AWS CloudFormation
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
+      with:
+        name: MyStack
+        template: Templates/SQSTemplate.yml
+      
 
