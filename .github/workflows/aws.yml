@@ -34,13 +34,13 @@ jobs:
     - name: Deploy DynamoDb to AWS CloudFormation
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
-        name: MyStack
+        name: MyStack1
         template: Templates/dynamoDbTemplate.yml
         
     - name: Deploy SQS to AWS CloudFormation
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
-        name: MyStack
+        name: MyStack2
         template: Templates/SQSTemplate.yml
       
 
