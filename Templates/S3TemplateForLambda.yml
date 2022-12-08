@@ -4,4 +4,4 @@ Resources:
     S3Bucket:
         Type: 'AWS::S3::Bucket'
         Properties: 
-            BucketName: kep-aws-task-bucket
+            BucketName: s3-lambda-bucket

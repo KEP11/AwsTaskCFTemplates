@@ -4,5 +4,5 @@ Resources:
     SQS:
         Type: 'AWS::SQS::Queue'
         Properties: 
-            QueueName: "kep-aws-task-queue"
+            QueueName: "booksQueue"
     

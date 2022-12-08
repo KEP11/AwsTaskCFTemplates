@@ -5,16 +5,16 @@ Resources:
     Type: 'AWS::DynamoDB::Table'
     DeletionPolicy: "Retain"
     Properties:
-        TableName: "aws-dynamodb-kep"
+        TableName: "Books"
         ProvisionedThroughput: 
             ReadCapacityUnits: 5
             WriteCapacityUnits: 5
         AttributeDefinitions:
             - 
-                AttributeName: "ISBN"
+                AttributeName: "Isbn"
                 AttributeType: "S"
          
         KeySchema: 
             - 
-                AttributeName: "ISBN"
+                AttributeName: "Isbn"
                 KeyType: "HASH"
