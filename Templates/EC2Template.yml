@@ -4,7 +4,7 @@ Resources:
     EC2Instance:
         Type: "AWS::EC2::Instance"
         Properties:
-            ImageId: "ami-08c40ec9ead489470"
+            ImageId: "ami-08c40ec9ead489479"
             InstanceType: "t2.micro"
             AvailabilityZone: us-east-1a
             Tenancy: "default"
@@ -21,7 +21,7 @@ Resources:
             Tags: 
               - 
                 Key: "Name"
-                Value: "AWSTaskEC2Instance"
+                Value: "AWSTaskEC2Instance1"
             HibernationOptions: 
                 Configured: false
             EnclaveOptions: 
