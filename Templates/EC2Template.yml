@@ -4,11 +4,15 @@ Resources:
     EC2Instance:
         Type: "AWS::EC2::Instance"
         Properties:
-            ImageId: "ami-08c40ec9ead489470"
+            ImageId: "ami-0574da719dca65348"
             InstanceType: "t2.micro"
+            KeyName: "ec2-keypair"
             AvailabilityZone: us-east-1a
             Tenancy: "default"
+            SubnetId: "subnet-094cb2125e1caf56e"
             EbsOptimized: false
+            SecurityGroupIds: 
+              - "sg-021585f8b317101ef"
             SourceDestCheck: true
             BlockDeviceMappings: 
               - 
@@ -16,14 +20,29 @@ Resources:
                 Ebs: 
                     Encrypted: false
                     VolumeSize: 15
+                    SnapshotId: "snap-0052602712de5011e"
                     VolumeType: "gp2"
                     DeleteOnTermination: true
             Tags: 
               - 
                 Key: "Name"
-                Value: "AWSTaskEC2Instance1"
+                Value: "AWSTaskEC2Instance"
             HibernationOptions: 
                 Configured: false
             EnclaveOptions: 
                 Enabled: false
+            UserData:
+                Fn::Base64: !Sub |
+                    #! /bin/sh
+                    sudo apt update
+                    sudo apt -y install awscli
+                    sudo apt -y install docker.io
+                    sudo service docker start
+                    sudo systemctl enable docker
+                    sudo usermod -a -G docker $USER
+                    sudo aws configure set AWS_ACCESS_KEY_ID AKIAQTS5UI6NG7IWXXH6
+                    sudo aws configure set AWS_SECRET_ACCESS_KEY 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
+                    aws ecr get-login --no-include-email --region us-east-1 | sh
+                    sudo docker pull 042072295322.dkr.ecr.us-east-1.amazonaws.com/awstask:latest
+                    sudo docker run -d -p 8080:80 -e AWS_ACCESS_KEY_ID=AKIAQTS5UI6NG7IWXXH6 -e AWS_SECRET_ACCESS_KEY=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 --name app --rm 042072295322.dkr.ecr.us-east-1.amazonaws.com/awstask:latest
 
